@@ -1,0 +1,77 @@
+string $objects[]; //store list of all obj transforms
+string $temp[]; // temporarily hold [transform, shape] of sphere
+CreateEmptyGroup;
+rename "null1" "Geometry";
+$temp = `polySphere -r 8 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 0 1 0;
+//$temp == ["pSphere1", "polySphere1"];
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 5 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+//$temp == ["pSphere2", "polySphere2"];
+move 0 9.5 0;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 3 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 0 15 0;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+rename "pSphere3" "bigBoy";
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 0.6 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 4.7 11 0;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 0.6 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 4.7 11 0;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 0.6 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 6 5.9 0;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 0.6 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 7.7 2 0;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 0.3 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 2.4 16.2 1;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+$temp = `polySphere -r 0.3 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1`;
+move 2.4 16 -1.2;
+stringArrayInsertAtIndex(0, $objects, $temp[0]);
+
+polyCone -r 1 -h 3 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move 3 15 0;
+rotate -x -90 -y -90;
+
+polyCylinder -r 1 -h 2 -sx 16 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+scale 0.3 8 0.3;
+rotate -x 67;
+move 0 10.5 4.5;
+select -r pCylinder1 ;
+select -r pCylinder1.f[37] ;
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -0.1385819077 -pvy 13.72348335 -pvz 11.82259552 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCylinder1.f[37];
+setAttr "polyExtrudeFace1.localTranslate" -type double3 0 0 1.56665 ;
+setAttr "polyExtrudeFace1.localTranslate" -type double3 -0.824152 0 1.56665 ;
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx 0.1385819614 -pvy 13.72348405 -pvz 11.82259625 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCylinder1.f[32];
+setAttr "polyExtrudeFace2.localTranslate" -type double3 0 0 4.16378 ;
+setAttr "polyExtrudeFace2.localTranslate" -type double3 0 0 3.63408 ;
+setAttr "polyExtrudeFace2.localTranslate" -type double3 0 0 1.858695 ;
+setAttr "polyExtrudeFace2.localTranslate" -type double3 0.664762 0 1.858695 ;
+rename "pCylinder1" "stickhand1";
+duplicate stickhand1; 
+select -r stickhand2;
+rotate -y 180;
+move 0 10.5 -6;
+group stickhand1 stickhand2;
+parent pSphere1 Geometry;
+parent pSphere2 Geometry;
+parent bigBoy Geometry;
+parent group1 Geometry;
+group pSphere3 pSphere4 pSphere5 pSphere6 pSphere7 pSphere8;
+parent pCone1 Geometry;
+parent group2 Geometry;
+$objects = stringArrayCatenate($objects, $temp);
+print ($objects);
