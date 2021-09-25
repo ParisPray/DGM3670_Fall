@@ -1,0 +1,80 @@
+/*
++ : addition
+- : subtraction
+* : multiplication
+/ : division
+
++= : add to and assign
+-= : subtract ""
+*= : multiply ""
+/= : divide ""
+
+++ : increment by 1
+
+% : modulus (returns remainder)
+
+== equal to
+
+*/
+/*
+Logical Operators
+
+== : equal to 
+!= : not equal to
+> : greater than
+< : less than 
+>= : greater than or equal to
+<= : less than or equal to
+
+&& : and
+|| : or
+
+*/
+
+print ("here comes the boyyyy");
+
+string $name = "Bethany";
+
+/* for loop */
+
+for ($i-1; $i < 10; $i+=2)
+{
+    print ($i);
+    print ("\n");
+    
+}
+
+/*  while loop */
+
+int $i - 0;
+
+while ( $i < 10 )
+{
+    print ($i);
+    print ("\n");
+    $i++;   
+}
+
+/* DO WHILE LOOP */
+int $i = 0;
+do
+{
+    print ($i0;
+    $i--;
+}
+while ( $i > -100);
+
+
+/* SWITCH */
+int $i = 
+switch ($i){
+        case 7:
+    print ("7 is cool");
+    break;
+    case 40: 
+    print ("40 isnt so cool");
+    break;
+    default:
+    print ("NUMBERS!");
+    break;
+}

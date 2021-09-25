@@ -1,0 +1,154 @@
+global proc FunctionName(){
+    /* function block */
+    print ("Hello friend!");
+}
+
+FunctionName();
+
+global float $result;
+
+global proc float Add(float $numbers[])
+{
+    float $sum = 0;
+    
+    for($i=0; $i<size($numbers); $i++)
+    {
+       $sum += $numbers[$i];
+    }
+    
+    return $sum;
+   
+}
+
+Add({3,4,5,6,7});
+
+
+global proc float Subtract(float $numbers[])
+{
+    float $difference = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $difference -= $numbers[$i];
+    }
+    
+    return $difference;
+   
+}
+
+Subtract({8,5});
+
+
+
+global proc float Multiply(float $numbers[])
+{
+    float $sum = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $sum *= $numbers[$i];
+    }
+    
+    return $sum;
+   
+}
+
+Multiply({8,5});
+
+global proc float Divide(float $numbers[])
+{
+    float $difference = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $difference /= $numbers[$i];
+    }
+    
+    return $difference;
+   
+}
+
+Divide({8,5});
+
+global proc float PowerOf(float $numbers[])
+{
+    pow $numbers[0] $numbers[1];
+    return `pow $numbers[0] $numbers[1]`;
+    
+}
+
+PowerOf({8,5});
+
+global proc float Mean(float $numbers[])
+{
+    
+    float $sum = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $sum += $numbers[$i];
+       
+    }
+    $sum /= size($numbers);
+       
+    return $sum;
+   
+}
+Mean({1,2,3,4,5});
+
+/* global proc float Median(float $numbers[])
+{
+    
+    float $sum = $numbers[$i];
+    float $arraySize = size($numbers);
+    float $dividetwo = 2.0;
+    $sum /= $dividetwo;
+    $arraySize /= $dividetwo;
+    $arraySize += 1;
+    return $arraySize;
+    return $sum;
+   
+}
+Median({5,6,7,8}); */
+
+global proc float Median(float $numbers[])
+{
+    float $sorted[] = `sort $numbers`;
+    int $total = 0;
+    
+    if(size($numbers) % 2 == 0)
+    {
+        $total = size($numbers)/2;
+        return $numbers[$total];
+        }
+       
+    
+}
+$results = Median({5,6,9,6});
+
+global proc float mode(float $numbers[])
+{
+    float $modeNum = 0;
+    
+    for($i=0; $i<size(numbers); $i++)
+    {
+        for($j=$i+1; $j<size($numbers); $j++)
+        {
+            $numbers = `sort $numbers`;
+            
+            $modeNum = $numbers[$i];
+            
+            if ($numbers[$i] == $numbers[$j])
+            {
+                
+            }
+        }
+    }
+    return $modeNum;
+}
+mode({2,3,3,3,4});
+
