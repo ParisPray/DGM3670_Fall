@@ -1,0 +1,201 @@
+global float $result;
+
+global proc float Add(float $numbers[])
+{
+    float $sum = 0;
+    
+    for($i=0; $i<size($numbers); $i++)
+    {
+       $sum += $numbers[$i];
+    }
+    
+    return $sum;
+   
+}
+
+
+
+global proc float Subtract(float $numbers[])
+{
+    float $difference = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $difference -= $numbers[$i];
+    }
+    
+    return $difference;
+   
+}
+
+
+
+
+global proc float Multiply(float $numbers[])
+{
+    float $sum = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $sum *= $numbers[$i];
+    }
+    
+    return $sum;
+   
+}
+
+
+
+global proc float Divide(float $numbers[])
+{
+    float $difference = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $difference /= $numbers[$i];
+    }
+    
+    return $difference;
+   
+}
+
+
+
+global proc float PowerOf(float $numbers[])
+{
+    pow $numbers[0] $numbers[1];
+    return `pow $numbers[0] $numbers[1]`;
+    
+}
+
+
+
+global proc float Mean(float $numbers[])
+{
+    
+    float $sum = $numbers[0];
+    
+    for($i=1; $i<size($numbers); $i++)
+    {
+         
+       $sum += $numbers[$i];
+       
+    }
+    $sum /= size($numbers);
+       
+    return $sum;
+   
+}
+
+
+
+global proc float Median(float $numbers[])
+{
+    float $sorted[] = `sort $numbers`;
+    int $total = 0;
+    
+    if(size($numbers) % 2 == 0)
+    {
+        $total = size($numbers)/2;
+        return $numbers[$total];
+        }
+       
+    
+}
+global proc float[] Mode(float $numbers[])
+
+{
+
+float $mode[];
+float $values[];
+int $freq[];
+
+for($i=0; $i<size($numbers); $i++)
+{
+   if (floatArrayContains($numbers[$i], $values) == 0)
+   {
+       $values[size($values)] = $numbers [$i];
+       $freq[size($freq)] = 1;
+   }
+   else
+   {
+       int $index = floatArrayFind($numbers[$i], 0, $values);
+       print ($index); 
+       $freq[$index] = $freq[$index] + 1;
+   }
+    
+}
+print ("\nValues:\n");
+print (floatArrayToString($values, ", "));
+print ("\nFrequency:\n");
+print (intArrayToString($freq, ", "));
+
+int $maxValue = 0;
+for($i=0; $i<size($freq); $i++)
+{
+    if($freq[$i] > $maxValue)
+    {
+        $maxValue = $freq[$i];
+    }
+}
+
+while (intArrayFind($maxValue, 0, $freq) != -1)
+{
+    int $modeIndex = intArrayFind($maxValue, 0, $freq);
+    $mode[size($mode)] = $values[$modeIndex];
+    $freq[$modeIndex] = 0;
+}
+return $mode;
+}
+
+
+global proc string Calculator(string $function, float $numbers[])
+{
+    string $stringArray;
+    
+    
+        if($function == "Add")
+        {
+            $stringArray = floatArrayToString($numbers, "+") + "=" + Add($numbers); 
+            return $stringArray;
+          
+        }
+        if($function == "Subtract")
+        {
+            $stringArray = floatArrayToString($numbers, "-") + "=" + Subtract($numbers); 
+            return $stringArray;
+        }
+        
+        if($function == "Multiply")
+        {
+            $stringArray = floatArrayToString($numbers, "x") + "=" + Multiply($numbers); 
+            return $stringArray;
+        }
+        if($function == "Divide")
+        {
+            $stringArray = floatArrayToString($numbers, "%") + "=" + Divide($numbers); 
+            return $stringArray;
+        }
+        if($function == "Mean")
+        {
+            $stringArray = "The Array is:" + floatArrayToString($numbers, ",") + " The Mean is " + "=" + Mean($numbers); 
+            return $stringArray;
+        }
+        if($function == "Median")
+        {
+            $stringArray = "The Array is:" + floatArrayToString($numbers, ",")+ " The Median is " + "=" + Median($numbers); 
+            return $stringArray;
+        }
+         if($function == "Mode")
+        {
+            float $modeResult[];
+            $modeResult = Mode($numbers);
+            $stringArray = floatArrayToString($numbers, ",")+ " The Mode is " + "=" + floatArrayToString($modeResult, ","); 
+            return $stringArray;
+        }
+}
+Calculator("Mode",{1,2,3,3,3,3,4,5,64});
+
