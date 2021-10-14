@@ -1,0 +1,27 @@
+CreatePolygonSphere;
+select -r pSphere1;
+
+global proc functionRandomize(int $amount, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
+{
+    float $x;
+    float $y;
+    float $z;
+    string $dup[];
+    select -r pSphere1;
+    string $objects[] = `ls -sl`;
+    
+    
+    
+    for($i=0; $i < size($objects); $i++)
+    {
+        for($j=0; $j<($amount); $j++)
+        {
+            $dup = `duplicate $objects[$i]`;
+            $x = `rand $minX $maxX`;
+            $y = `rand $minY $maxY`;
+            $z = `rand $minZ $maxZ`;
+            move -y $x -x $x -z $z;
+        }
+    }
+}
+functionRandomize(1, 0, 100, 0, 100, 0, 100);
