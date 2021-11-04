@@ -1,9 +1,9 @@
 import maya.cmds as cmds
 
-# string.find, string.partition, string.count
+def renameFunc(string):
+    listObj = cmds.ls(selection=True)
+    string.partition("##")
+    for count, object in enumerate(listObj):
+        cmds.rename(object, string.partition('#')[0] + str(count + 1).zfill(string.count('#')) + string.rpartition('#')[2])
 
-
-
-"Leg_" "##"  "_Jnt" string.count("#")
-
-part[0]+str(i).zfill(count)+part[2]
+renameFunc("Arm_##_Jnt")
