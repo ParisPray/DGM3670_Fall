@@ -1,20 +1,17 @@
 import maya.cmds as cmds
 
-##def changeColor():
-    ##objSel = cmds.ls(selection=True)
-    ##cmds.setAttr ('objSel' + ".overrideEnabled", 0)
-    ##cmds.setAttr ('objSel' + ".overrideColor", 13)
 def changeColor():
     colorSel = cmds.ls(sl=True)
-    cmds.setAttr ('colorSel' + ".overrideEnabled", 0)
-    cmds.setAttr ('colorSel' + ".overrideColor", 13)
-    
+    cmds.setAttr (colorSel[0] + ".overrideEnabled", 1)
+    cmds.setAttr (colorSel[0] + ".overrideColor", 13)
+  
     
 def createControl():
-    cmds.circle (n='ctrl')
     objSel = cmds.ls(selection=True)
+    cmds.circle (n='ctrl')
     cmds.group ('ctrl',name='GroupJnt')
     cmds.matchTransform('GroupJnt',objSel)
+    
 
 
 def renameFunc(string):
@@ -24,8 +21,13 @@ def renameFunc(string):
         cmds.rename(object, string.partition('#')[0] + str(count + 1).zfill(string.count('#')) + string.rpartition('#')[2])
 
 createControl()
-cmds.select ("ctrl*")
-renameFunc("Arm_##_Jnt")
-cmds.select("GoupJnt")
-renameFunc("Arm_##_Grp")
+cmds.select("GroupJnt")
+renameFunc("Arm_##_Ctrl_Grp")
+cmds.select("ctrl")
+renameFunc("Arm_##_Ctrl")
+cmds.select("Arm_##_Ctrl")
+changeColor()
+
+    
+    
 
