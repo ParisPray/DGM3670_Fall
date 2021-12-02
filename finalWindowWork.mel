@@ -1,0 +1,193 @@
+running deadline command: -getrepositoryfilepath submission/Maya/Main/SubmitMayaToDeadline.mel
+Running submission script "Error: The configured Client Certificate ('/tc-render1/_DeadlineDatabase10/certs/Deadline10Client.pfx') does not exist. (Deadline.Configuration.DeadlineConfigException)"
+// Warning: file: C:/Users/10768840/Documents/maya/scripts/DeadlineMayaClient.mel line 132: The SubmitMayaToDeadline.mel script could not be found in the Deadline Repository. Please make sure that the Deadline Client has been installed on this machine, that the Deadline Client bin folder is set in the DEADLINE_PATH environment variable, and that the Deadline Client has been configured to point to a valid Repository. // 
+file -f -new;
+// untitled // 
+commandPort -securityWarning -name commandportDefault;
+onSetCurrentLayout "Maya Classic";
+// AbcExport v1.0 using Alembic 1.7.5 (built Nov 30 2020 18:40:46)
+// AbcImport v1.0 using Alembic 1.7.5 (built Nov 30 2020 18:40:46)
+// Warning: file: C:/Program Files/Autodesk/Maya2022/scripts/others/supportRenderers.mel line 67: The renderer "arnold" used by this scene, is not currently available. The "mayaSoftware" renderer will be used instead. To prevent this message from being displayed in the future, set the environment variable: MAYA_NO_WARNING_FOR_MISSING_DEFAULT_RENDERER=1 // 
+// Warning: file: C:/Program Files/Autodesk/Maya2022/scripts/startup/scriptEditorPanel.mel line 2202: Please enter a non-empty tab name. // 
+import maya.cmds as cmds
+## replace all m_window with self.m_window ##
+class_ToolUI():
+    def __init__(self):
+        self.m_window= 'changeColorUIWin'
+        pass
+        
+    def create(self):
+        self.m_window = cmds.window(m_window,
+title="Big Chungus",
+widthHeight=(200, 55))
+
+m_column = cmds.columnLayout(parent=m_window, 
+adjustableColumn=True)
+cmds.button(parent=m_column, label='Ball', command='cmds.polySphere()')
+cmds.button(parent=m_column, label='Red Color', command=lambda x: ChangeColor(13))
+
+self.show()
+
+
+def show(self):
+    cmds.showWindow(self.m_window)
+
+
+
+
+
+
+if cmds.window(m_window, exists=True):
+    cmds.deleteUI(m_window)
+    
+    
+    
+
+
+
+def ChangeColor(color):
+    sels=cmds.ls(sl=True)
+    for sel in sels:
+        shapes = cmds.listRelatives(sel, children=True, shapes=True)
+        for shape in shapes:
+            cmds.setAttr('%s.overrideEnabled' %
+# Error: invalid syntax # 
+import maya.cmds as cmds
+## replace all m_window with self.m_window ##
+class_ToolUI():
+    def __init__(self):
+        self.m_window= 'changeColorUIWin'
+        pass
+        
+    def create(self):
+        self.m_window = cmds.window(m_window,
+title="Big Chungus",
+widthHeight=(200, 55))
+
+m_column = cmds.columnLayout(parent=m_window, 
+adjustableColumn=True)
+cmds.button(parent=m_column, label='Ball', command='cmds.polySphere()')
+cmds.button(parent=m_column, label='Red Color', command=lambda x: ChangeColor(13))
+
+self.show()
+
+
+def show(self):
+    cmds.showWindow(self.m_window)
+
+
+
+
+
+
+if cmds.window(m_window, exists=True):
+    cmds.deleteUI(m_window)
+    
+    
+    
+
+
+
+##def ChangeColor(color):
+##    sels=cmds.ls(sl=True)
+##    for sel in sels:
+##        shapes = cmds.listRelatives(sel, children=True, shapes=True)
+##        for shape in shapes:
+##            cmds.setAttr('%s.overrideEnabled' %
+# Error: invalid syntax # 
+import maya.cmds as cmds
+## replace all m_window with self.m_window ##
+class_ToolUI():
+    def __init__(self):
+        self.m_window= 'changeColorUIWin'
+        pass
+        
+    def create(self):
+        self.m_window = cmds.window(m_window,
+title="Big Chungus",
+widthHeight=(200, 55))
+
+m_column = cmds.columnLayout(parent=m_window, 
+adjustableColumn=True)
+cmds.button(parent=m_column, label='Ball', command='cmds.polySphere()')
+cmds.button(parent=m_column, label='Red Color', command=lambda x: ChangeColor(13))
+
+self.show()
+
+
+def delete(self):
+    if cmds.window(self.m_window, exists=True):
+        cmds.deletUI(self.m_window)
+
+def show(self):
+    cmds.showWindow(self.m_window)
+
+
+
+
+
+
+if cmds.window(m_window, exists=True):
+    cmds.deleteUI(m_window)
+    
+    
+    
+
+
+
+##def ChangeColor(color):
+##    sels=cmds.ls(sl=True)
+##    for sel in sels:
+##        shapes = cmds.listRelatives(sel, children=True, shapes=True)
+##        for shape in shapes:
+##            cmds.setAttr('%s.overrideEnabled' %
+# Error: invalid syntax # 
+import maya.cmds as cmds
+## replace all m_window with self.m_window ##
+class_ToolUI():
+    def __init__(self):
+        self.m_window= 'changeColorUIWin'
+        pass
+        
+    def create(self):
+        self.m_window = cmds.window(m_window,
+title="Big Chungus",
+widthHeight=(200, 55))
+
+m_column = cmds.columnLayout(parent=m_window, 
+adjustableColumn=True)
+cmds.button(parent=m_column, label='Ball', command='cmds.polySphere()')
+cmds.button(parent=m_column, label='Red Color', command=lambda x: ChangeColor(13))
+
+self.show()
+
+
+def delete(self):
+    if cmds.window(self.m_window, exists=True):
+        cmds.deletUI(self.m_window)
+
+def show(self):
+    cmds.showWindow(self.m_window)
+
+
+
+
+
+
+if cmds.window(m_window, exists=True):
+    cmds.deleteUI(m_window)
+    
+    
+    
+
+
+def ChangeColor(color):
+    sels=cmds.ls(sl=True)
+    for sel in sels:
+       shapes = cmds.listRelatives(sel, children=True, shapes=True)
+       for shape in shapes:
+            cmds.setAttr('%s.overrideEnabled' % (shape), True)
+            cmds.setAttr('%s.overrideEnabled' % (shape), color)
+            
+   return
+# Error: invalid syntax # 
